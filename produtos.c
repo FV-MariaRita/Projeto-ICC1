@@ -9,17 +9,19 @@ Esse arquivo contém as funções relativas à manipulação dos produtos no est
     - void aumenta_estoque_prod: responsável por aumentar a quantidade de um produto no estoque
 */
 
+
 #include "produtos.h"
+#include <string.h>
 
-void inserir_prod(Produto *prod, int id, char nome[150], int tamNome, int qtd, double preco) {
+void inserir_prod(Produto *prod, int id, const char *nome, int qtd, double preco) {
 
-    prod->id = id;
+    (*prod).id = id;
     
-    for (int i = 0; i < tamNome; i++) {
-        prod->nome[i] = nome[i];
-    }
-    prod->quantidade = qtd; 
-    prod->preco = preco; 
+    strncpy( (*prod).nome, nome, sizeof( (*prod).nome ) - 1);
+    (*prod).nome[sizeof( (*prod).nome ) - 1] = '\0';
+
+    (*prod).quantidade = qtd; 
+    (*prod).preco = preco; 
 
 }
 

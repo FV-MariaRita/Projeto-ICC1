@@ -22,7 +22,7 @@ typedef struct produto {
     double preco;
 } Produto;
 
-void inserir_prod(Produto *prod, int id, char nome[150], int tamNome, int qtd, double preco); 
+void inserir_prod(Produto *prod, int id, const char *nome, int qtd, double preco); 
 void modifica_preco_prod (Produto *prod, double novoPreco); 
 void aumenta_estoque_prod (Produto *prod, int qtd); 
 
