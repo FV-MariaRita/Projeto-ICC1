@@ -3,14 +3,14 @@ Projeto ICC 1 - Mercadinho
 Alunos: Chrystian Eloy, Julia Nogueira, Maria Rita Vargas
 
 Esse arquivo contém a definição da struct produto cujos atributos são id, nome, quantidade e preço.
-Esse código garante que a struct será definida somente uma vez no código, evitando problemas de dupla definição da mesma struct
+Esse código garante que a struct será definida somente uma vez no código, evitando problemas de dupla definição da mesma struct.
 
 Além disso, também há o protótipo das funções relativas 
 à manipulação dos produtos no estoque, a saber: 
 
-    - void inserir_prod : responsável por inserir um novo produto no estoque
-    - void modifica_preco_prod : responsável por modificar o preço de um produto no estoque
-    - void aumenta_estoque_prod: responsável por aumentar a quantidade de um produto no estoque
+    - void inserirProd : responsável por inserir um novo produto no estoque
+    - void modificaPrecoProd : responsável por modificar o preço de um produto no estoque
+    - void aumentaEstoqueProd : responsável por aumentar a quantidade de um produto no estoque
 */
 
 
@@ -24,8 +24,8 @@ typedef struct produto {
     double preco;
 } Produto;
 
-void inserir_prod(Produto *prod, int id, const char *nome, int qtd, double preco); 
-void modifica_preco_prod (Produto *prod, double novoPreco); 
-void aumenta_estoque_prod (Produto *prod, int qtd); 
+void inserirProd(Produto *prod, int id, const char *nome, int qtd, double preco); 
+void modificaPrecoProd (Produto *prod, double novoPreco); 
+void aumentaEstoqueProd (Produto *prod, int qtd); 
 
 #endif
