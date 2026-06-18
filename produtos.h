@@ -17,7 +17,7 @@ Além disso, também há o protótipo das funções relativas
 
 typedef struct produto {
     int id;
-    char nome[150]; 
+    char nome[30]; 
     int quantidade; 
     double preco;
 } Produto;

@@ -27,12 +27,12 @@ void inserir_prod(Produto *prod, int id, const char *nome, int qtd, double preco
 
 void modifica_preco_prod (Produto *prod, double novoPreco) {
 
-    prod->preco = novoPreco;
+    (*prod).preco = novoPreco;
 
 }
 
 void aumenta_estoque_prod (Produto *prod, int qtd) {
 
-    prod->quantidade += qtd;
+    (*prod).quantidade += qtd;
 
 }

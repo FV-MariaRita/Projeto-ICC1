@@ -22,7 +22,7 @@ int main() {
         //inserir produto
         if (op1 == 'I' && op2 == 'P') {
 
-            char nome[150];
+            char nome[30];
             int qtd; 
             double preco;
 
