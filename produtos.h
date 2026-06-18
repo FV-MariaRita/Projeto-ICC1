@@ -3,6 +3,8 @@ Projeto ICC 1 - Mercadinho
 Alunos: Chrystian Eloy, Julia Nogueira, Maria Rita Vargas
 
 Esse arquivo contém a definição da struct produto cujos atributos são id, nome, quantidade e preço.
+Esse código garante que a struct será definida somente uma vez no código, evitando problemas de dupla definição da mesma struct
+
 Além disso, também há o protótipo das funções relativas 
 à manipulação dos produtos no estoque, a saber: 
 
