@@ -27,7 +27,7 @@ void inserirProd(Produto *prod, int id, const char *nome, int qtd, double preco)
 
 void modificaPrecoProd (Produto *prod, double novoPreco) {
 
-    (*prod).preco = novoPreco;
+    prod->preco = novoPreco;
 
 }
 
