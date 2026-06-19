@@ -75,7 +75,14 @@ int main() {
             }
 
             modifica_preco_prod(prod, precoNovo);
-
+            
+        //realiza a venda dos produtos
+        } else if ( op1 == 'V' && op2 == 'E') {
+             
+                 
+        
+        
+        
         }
 
         
