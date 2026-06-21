@@ -1,26 +1,50 @@
 #include <stdio.h>
+#include <string.h>
 #include "produtos.h"
+#include "gerenciarMemoria.c"
 
 
 int main() {
 
-    //parte dos arquivos
+    //Variáveis do programa -> estoque e saldo
+    Produto *estoque = NULL;
+    int prodsEstoque;
+    int tamEstoque; 
+    double saldoCaixa;
 
-    //estoque
-    Produto estoque[10];
-    int prodsEstoque = 0;
+    //Início do dia
+    FILE *arquivo = fopen("estoque.bin", "rb"); 
 
-    //caracteres de operação
-    char op1, op2;
+    if (arquivo == NULL) {
+        saldoCaixa = 100; 
+
+        scanf("%d", &tamEstoque); 
+        estoque = alocaEstoque(estoque, tamEstoque);
+        prodsEstoque = 0; 
+    }
+
+    else {
+        fread(&saldoCaixa, sizeof(double), 1, arquivo);
+        fread(&prodsEstoque, sizeof(int), 1, arquivo);
+
+        tamEstoque = prodsEstoque;
+
+        estoque = alocaEstoque(estoque, tamEstoque);
+        fread(estoque, sizeof(Produto), prodsEstoque, arquivo);
+
+        fclose(arquivo);
+    }
     
-    //leitura do primeiro comando do programa
-    scanf(" %c %c", &op1, &op2);
 
-    //roda o programa até o dia finalizar
-    while (op1 != 'F' && op2 != 'E') {
+    //Operação do sistema
+    char oper[3];
+    scanf("%s", oper);    
+
+    //Roda o programa até o dia finalizar
+    while ( !(strcmp(oper, "FE") == 0) ) {
         
-        //inserir produto
-        if (op1 == 'I' && op2 == 'P') {
+        //Inserir produto
+        if (strcmp(oper, "IP") == 0) {
 
             char nome[30];
             int qtd; 
@@ -28,128 +52,97 @@ int main() {
 
             scanf("%s", nome);
             scanf("%d", &qtd); 
-            scanf("%lf", &preco); 
+            scanf("%lf", &preco);
 
+
+            if (prodsEstoque >= tamEstoque) 
+                estoque = realocaEstoque(estoque, &tamEstoque); 
+            
+                
             Produto *p, prod;
             p = &prod;
 
-            inserir_prod(p, prodsEstoque, nome, qtd, preco);
+            inserirProd(p, prodsEstoque, nome, qtd, preco);
 
             estoque[prodsEstoque] = *p;
             prodsEstoque++;           
 
         }
 
-        //alterar a quantidade no estoque
-        else if (op1 == 'A' && op2 == 'E') {
+        //Aumentar a quantidade de um produto no estoque
+        else if (strcmp(oper, "AE") == 0) {
             
             int codigo, qtd;
-            Produto *prod;
+            Produto *prod = NULL;
 
             scanf(" %d %d", &codigo, &qtd); 
             
-            for (int i = 0; i <= prodsEstoque; i++) {
+            for (int i = 0; i < prodsEstoque; i++) {
                 if (estoque[i].id == codigo) {
                     prod = &estoque[i];
                     break;
                 }
             }
 
-            aumenta_estoque_prod(prod, qtd);
+            if (prod != NULL)
+                aumentaEstoqueProd(prod, qtd);
         }
 
-        //modifica o preço do produto;
-        else if (op1 == 'M' && op2 == 'P') {
+        //Modifica o preço de um produto no estoque
+        else if (strcmp(oper, "MP") == 0) {
             
             int codigo;
             double precoNovo; 
-            Produto *prod;
+            Produto *prod = NULL;
 
             scanf(" %d %lf", &codigo, &precoNovo); 
             
-            for (int i = 0; i <= prodsEstoque; i++) {
+            for (int i = 0; i < prodsEstoque; i++) {
                 if (estoque[i].id == codigo) {
                     prod = &estoque[i];
                     break;
                 }
             }
 
-            modifica_preco_prod(prod, precoNovo);
-            
-        //realiza a venda dos produtos
-        } else if ( op1 == 'V' && op2 == 'E') {
+            if (prod != NULL)
+                modificaPrecoProd(prod, precoNovo);
+        } 
+
+
+        //Realizar a venda dos produtos
+        else if (strcmp(oper, "VE") == 0) {
              
-                 
-        
-        
-        
         }
 
-        
+        //Consultar o estoque
+        else if (strcmp(oper, "CE") == 0) {
+
+        }
+
+        //Consultar o saldo
+        else if (strcmp(oper, "CS") == 0) {
+
+        }
 
 
-
-        scanf(" %c %c", &op1, &op2);
+        scanf("%s", oper);
     }
     
+    //Finalizar o dia
+    arquivo = fopen("estoque.bin", "wb");
 
-    
+    if (arquivo == NULL) {
+        liberaEstoque(estoque); 
+        return 1;
+    }
+
+    fwrite (&saldoCaixa, sizeof(double), 1, arquivo); 
+    fwrite (&prodsEstoque, sizeof(int), 1, arquivo); 
+    fwrite (estoque, sizeof(Produto), prodsEstoque, arquivo); 
+
+    fclose(arquivo);
+
+    liberaEstoque(estoque);
+
     return 0;
 }
-
-
-
-
-
-/*
-int q;
-    scanf("%d", &q);
-
-    char nome[100];
-    int qtd; 
-    double preco; 
-
-    for (int i = 0; i < q; i++) {
-        scanf("%s", nome);
-        scanf("%d", &qtd); 
-        scanf("%lf", &preco); 
-
-        Produto *p, prod;
-        p = &prod;
-
-        inserir_prod(p, i, nome, 10, qtd, preco);
-
-        estoque[i] = *p;
-    }
-
-    for (int i = 0; i < q; i++) {
-        printf("%d\t", estoque[i].id); 
-        printf("%s\t", estoque[i].nome);
-        printf("%d\t", estoque[i].quantidade); 
-        printf("%lf\n", estoque[i].preco);
-    }
-    
-    Produto *pont = &estoque[2]; 
-    
-    double novo; 
-    scanf("%lf", &novo); 
-    modifica_preco_prod(pont, novo); 
-
-    for (int i = 0; i < q; i++) {
-        printf("%d\t", estoque[i].id); 
-        printf("%s\t", estoque[i].nome);
-        printf("%d\t", estoque[i].quantidade); 
-        printf("%lf\n", estoque[i].preco);
-    }
-
-    int num; 
-    scanf("%d", &num); 
-    aumenta_estoque_prod(pont, num);
-
-    for (int i = 0; i < q; i++) {
-        printf("%d\t", estoque[i].id); 
-        printf("%s\t", estoque[i].nome);
-        printf("%d\t", estoque[i].quantidade); 
-        printf("%lf\n", estoque[i].preco);
-    }
-*/
