@@ -4,9 +4,9 @@ Alunos: Chrystian Eloy, Julia Nogueira, Maria Rita Vargas
 
 Esse arquivo contém as funções relativas à manipulação dos produtos no estoque, a saber: 
 
-    - void inserir_prod : responsável por inserir um novo produto no estoque
-    - void modifica_preco_prod : responsável por modificar o preço de um produto no estoque
-    - void aumenta_estoque_prod: responsável por aumentar a quantidade de um produto no estoque
+    - void inserirProd: responsável por inserir um novo produto no estoque
+    - void modificaPrecoProd: responsável por modificar o preço de um produto no estoque
+    - void aumentaEstoqueProd: responsável por aumentar a quantidade de um produto no estoque
 */
 
 
