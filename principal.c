@@ -2,6 +2,7 @@
 #include <string.h>
 #include "produtos.h"
 #include "gerenciarMemoria.c"
+#include "venda.h"
 
 
 int main() {
