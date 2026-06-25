@@ -21,3 +21,35 @@ Consulta saldo:
 Saldo:_<saldo do caixa>
 --------------------------------------------------
 */
+
+#include <stdio.h>
+#include "consultas.h"
+
+// Imprime o estoque completo do mercado.
+
+void consultaEstoque (Produto *estoque, int prodsEstoque) {
+
+    for (int i = 0; i < prodsEstoque; i++) {
+
+        printf("%d %s %d\n", estoque[i].id, estoque[i].nome, estoque[i].quantidade);
+    }
+
+    for (int i = 0; i < 50; i++) {
+        printf("-");
+    }
+
+    printf("\n");
+}
+
+// Imprime o saldo atual do caixa.
+
+void consultaSaldoCaixa(double saldoCaixa) {
+
+    printf("Saldo: %.2lf\n", saldoCaixa);
+
+    for (int i = 0; i < 50; i++) {
+        printf("-");
+    }
+
+    printf("\n");
+}
