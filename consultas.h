@@ -1,19 +1,19 @@
 /*
-Projeto ICC 1 - Mercadinho 
+Projeto ICC 1 - Mercadinho
 Alunos: Chrystian Eloy, Julia Nogueira, Maria Rita Vargas
 
-Esse arquivo contém as declarações das funções utilizadas para consultar o saldo do caixa e o estoque do mercadinho.
- 
+Arquivo de cabeçalho do módulo de consultas.
+Contém as declarações das funções utilizadas
+para consulta do estoque e do saldo do caixa.
 */
-
 
 #ifndef CONSULTAS_H
 #define CONSULTAS_H
 
 #include "produtos.h"
 
+void consultaEstoque (Produto *estoque,int prodsEstoque);
 
-void consultaSaldoCaixa (double saldoCaixa); 
-void consultaEstoque (Produto *estoque); 
+void consultaSaldoCaixa (double saldoCaixa);
 
 #endif
