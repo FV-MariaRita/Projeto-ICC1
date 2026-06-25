@@ -143,7 +143,7 @@ int main() {
 
     fclose(arquivo);
 
-    liberaEstoque(estoque);
+    liberaEstoque(&estoque);
 
     return 0;
 }

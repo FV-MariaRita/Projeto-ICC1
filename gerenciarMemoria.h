@@ -14,7 +14,7 @@ O corpo dessas funções está definido no arquivo gerenciarMemoria.c
 
 Produto *alocaEstoque(Produto *estoque, int tam);
 Produto *realocaEstoque(Produto *estoque, int *tam);
-void liberaEstoque(Produto *estoque);
+void liberaEstoque(Produto **estoque);
 
 
 #endif

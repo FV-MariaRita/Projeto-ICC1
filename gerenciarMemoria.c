@@ -21,7 +21,7 @@ Produto *realocaEstoque(Produto *estoque, int *tam) {
     temp = (Produto *) realloc(estoque, *tam * sizeof(Produto)); 
 
     if (temp == NULL) {
-        liberaEstoque(estoque); 
+        liberaEstoque(&estoque); 
         exit(1);
     }
 
