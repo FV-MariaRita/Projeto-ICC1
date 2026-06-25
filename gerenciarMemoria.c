@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "produtos.h"
+#include "gerenciarMemoria.h"
 
 
 Produto *alocaEstoque(Produto *estoque, int tam) {
@@ -26,7 +28,11 @@ Produto *realocaEstoque(Produto *estoque, int *tam) {
     return temp;
 }
 
-void liberaEstoque(Produto *estoque) {
-    free(estoque);
-    estoque = NULL; 
+void liberaEstoque(Produto **estoque) {
+    
+    if (estoque != NULL && *estoque != NULL) {
+        free(*estoque);
+        *estoque = NULL; 
+    }
+    
 }
