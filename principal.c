@@ -3,6 +3,7 @@
 #include "produtos.h"
 #include "gerenciarMemoria.h"
 #include "venda.h"
+#include "consultas.h"
 
 
 int main() {
@@ -117,12 +118,12 @@ int main() {
 
         //Consultar o estoque
         else if (strcmp(oper, "CE") == 0) {
-
+            consultaEstoque(estoque,prodsEstoque);
         }
 
         //Consultar o saldo
         else if (strcmp(oper, "CS") == 0) {
-
+            consultaSaldoCaixa(saldoCaixa);
         }
 
 
