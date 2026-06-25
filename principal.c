@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "produtos.h"
-#include "gerenciarMemoria.c"
+#include "gerenciarMemoria.h"
 #include "venda.h"
 
 
@@ -54,7 +54,6 @@ int main() {
             scanf("%s", nome);
             scanf("%d", &qtd); 
             scanf("%lf", &preco);
-
 
             if (prodsEstoque >= tamEstoque) 
                 estoque = realocaEstoque(estoque, &tamEstoque); 
@@ -112,7 +111,8 @@ int main() {
 
         //Realizar a venda dos produtos
         else if (strcmp(oper, "VE") == 0) {
-             
+            
+            realizarVenda(estoque, prodsEstoque, &saldoCaixa);    
         }
 
         //Consultar o estoque
@@ -133,7 +133,7 @@ int main() {
     arquivo = fopen("estoque.bin", "wb");
 
     if (arquivo == NULL) {
-        liberaEstoque(estoque); 
+        liberaEstoque(&estoque); 
         return 1;
     }
 

@@ -13,6 +13,11 @@ Esse arquivo contém as funções relativas à manipulação dos produtos no est
 #include "produtos.h"
 #include <string.h>
 
+void inserirProd(Produto *prod, int id, const char *nome, int qtd, double preco); 
+void modificaPrecoProd (Produto *prod, double novoPreco); 
+void aumentaEstoqueProd (Produto *prod, int qtd);
+
+
 void inserirProd(Produto *prod, int id, const char *nome, int qtd, double preco) {
 
     (*prod).id = id;
