@@ -9,6 +9,7 @@ a atualização das quantidades vendidas e do saldo do caixa.
 
 #include <stdio.h>
 #include "venda.h"
+#include "produtos.h"
 
 /*
     Procura um produto no estoque a partir do seu código.
@@ -44,12 +45,16 @@ void realizarVenda(Produto *estoque, int prodsEstoque, double *saldoCaixa) {
         Produto *prod =
             buscarProduto(estoque, prodsEstoque, codigo);
 
-        if ((*prod).quantidade > 0) {
+        
+        if (prod != NULL) {
 
-            printf("%s %.2lf\n", (*prod).nome, (*prod).preco);
-            (*prod).quantidade--;
-            total += (*prod).preco;
+            if ((*prod).quantidade > 0) {
 
+                printf("%s %.2lf\n", (*prod).nome, (*prod).preco);
+                (*prod).quantidade--;
+                total += (*prod).preco;
+
+            }
         }
         
         scanf("%d", &codigo);

@@ -24,6 +24,7 @@ Saldo:_<saldo do caixa>
 
 #include <stdio.h>
 #include "consultas.h"
+#include "produtos.h"
 
 // Imprime o estoque completo do mercado.
 

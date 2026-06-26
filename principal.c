@@ -87,10 +87,11 @@ int main() {
                     }
                 }
 
-                if (prod != NULL)
+                if (prod != NULL) {
                     aumentaEstoqueProd(prod, qtd);
-
-                saldoCaixa -= (*prod).preco *qtd;
+                    saldoCaixa -= (*prod).preco *qtd;
+                }                 
+                
             }    
            
         }
