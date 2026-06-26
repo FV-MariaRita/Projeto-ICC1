@@ -87,6 +87,8 @@ int main() {
 
             if (prod != NULL)
                 aumentaEstoqueProd(prod, qtd);
+
+            saldoCaixa -= (*prod).preco * qtd;
         }
 
         //Modifica o preço de um produto no estoque
