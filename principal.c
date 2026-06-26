@@ -103,16 +103,22 @@ int main() {
             Produto *prod = NULL;
 
             scanf(" %d %lf", &codigo, &precoNovo); 
-            
-            for (int i = 0; i < prodsEstoque; i++) {
-                if (estoque[i].id == codigo) {
-                    prod = &estoque[i];
-                    break;
-                }
-            }
 
-            if (prod != NULL)
-                modificaPrecoProd(prod, precoNovo);
+            if (precoNovo >= 0.0) {
+                
+                for (int i = 0; i < prodsEstoque; i++) {
+                    if (estoque[i].id == codigo) {
+                        prod = &estoque[i];
+                        break;
+                    }
+                }
+
+                if (prod != NULL)
+                    modificaPrecoProd(prod, precoNovo);
+
+            }
+            
+            
         } 
 
 
