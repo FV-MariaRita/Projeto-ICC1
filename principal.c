@@ -77,18 +77,22 @@ int main() {
             Produto *prod = NULL;
 
             scanf(" %d %d", &codigo, &qtd); 
-            
-            for (int i = 0; i < prodsEstoque; i++) {
-                if (estoque[i].id == codigo) {
-                    prod = &estoque[i];
-                    break;
+
+            if (qtd >= 0) {
+
+                for (int i = 0; i < prodsEstoque; i++) {
+                    if (estoque[i].id == codigo) {
+                        prod = &estoque[i];
+                        break;
+                    }
                 }
-            }
 
-            if (prod != NULL)
-                aumentaEstoqueProd(prod, qtd);
+                if (prod != NULL)
+                    aumentaEstoqueProd(prod, qtd);
 
-            saldoCaixa -= (*prod).preco * qtd;
+                saldoCaixa -= (*prod).preco *qtd;
+            }    
+           
         }
 
         //Modifica o preço de um produto no estoque
