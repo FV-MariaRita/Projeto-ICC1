@@ -1,3 +1,17 @@
+/*
+Projeto ICC 1 - Mercadinho 
+Alunos: Chrystian Eloy, Julia Nogueira, Maria Rita Vargas
+
+Esse arquivo contém as funções utilizadas para gerenciar a memória utilizada pelo sistema.
+São elas: 
+
+    - Produto *alocaEstoque() : responsável por alocar dinamicamente o estoque, abortando o programa em caso de falha 
+    - Produto *realocaEstoque() : responsável por realocar dinamicamente o estoque, aumentando seu tamamho em 10 espaços para novos produtos. 
+    Aborta o programa e libera a memória já ocupada em caso de falha
+    - void liberaEstoque() : responsável por liberar a memória alocada para o estoque 
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "produtos.h"
