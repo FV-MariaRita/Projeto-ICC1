@@ -44,12 +44,14 @@ void realizarVenda(Produto *estoque, int prodsEstoque, double *saldoCaixa) {
         Produto *prod =
             buscarProduto(estoque, prodsEstoque, codigo);
 
-        printf("%s %.2lf\n", (*prod).nome, (*prod).preco);
+        if ((*prod).quantidade > 0) {
 
-        (*prod).quantidade--;
+            printf("%s %.2lf\n", (*prod).nome, (*prod).preco);
+            (*prod).quantidade--;
+            total += (*prod).preco;
 
-        total += (*prod).preco;
-
+        }
+        
         scanf("%d", &codigo);
     }
 
